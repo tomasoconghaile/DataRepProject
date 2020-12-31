@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 
  export class CreateTeam extends React.Component{
 
@@ -37,13 +38,19 @@ import React from 'react';
     onSubmit(e){
         e.preventDefault();
         alert("Team: " +this.state.Name + " Founded " + this.state.Founded + " Crest " + this.state.Crest);
-    
-        const newTeam = {
+
+        const newClub = {
             name: this.state.Name,
             founded: this.state.Founded,
             crest: this.state.Crest
         }
-        
+        axios.post('http://localhost:4000/api/teams',newClub)
+        .then((res)=> {
+            console.log(res)
+        })
+        .catch((err) =>{
+            console.log(err)
+        })
     }
 
 

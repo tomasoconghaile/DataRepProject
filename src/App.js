@@ -8,6 +8,7 @@ import {Navbar, Nav} from 'react-bootstrap';
 import{BrowserRouter as Router, Switch, Route} from'react-router-dom';
 import { CreateTeam } from './componenets/createTeam';
 import { ShowTeams } from './componenets/showTeams';
+import { Edit } from './componenets/edit';
 
 class App extends Component{
   render() {
@@ -29,6 +30,7 @@ class App extends Component{
       <Route path='/' component={Content} exact/>
       <Route path='/CreateTeam' component={CreateTeam} exact/>
       <Route path='/ShowTeams' component={ShowTeams} exact/>
+      <Route path='/edit/:id' component={Edit}></Route>
      
     </Switch>
      

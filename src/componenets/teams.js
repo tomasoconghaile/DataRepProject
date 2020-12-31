@@ -5,7 +5,7 @@ export class Teams extends React.Component{
 
     render(){
         return this.props.teams.map( (team) => {
-            return <TeamObject team={team}></TeamObject>
+            return <TeamObject team={team} ReloadDataMethod={this.props.ReloadDataMethod}></TeamObject>
         })
 
     }
