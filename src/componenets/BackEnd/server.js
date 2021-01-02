@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
-const port = 4000;
+const port = 4002;
 const coors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
 
 app.use(coors());
 
@@ -11,7 +12,11 @@ app.use(bodyParser.urlencoded({ extended: false}))
 
 app.use(bodyParser.json())
 
-const myConnectionString = 'mongodb+srv://admin:Jacob12345@cluster0.wlzsc.mongodb.net/teams?retryWrites=true&w=majority' //possible change
+app.use(express.static(path.join(__dirname, '../build')));
+app.use('/static', express.static(path.join(__dirname, 'build//static')));
+
+//The link to my mongo db server
+const myConnectionString = 'mongodb+srv://admin:Jacob12345@cluster0.wlzsc.mongodb.net/teams?retryWrites=true&w=majority' 
 mongoose.connect(myConnectionString, ({useNewUrlParser: true}));
 
 const Schema = mongoose.Schema;
@@ -37,6 +42,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+//gets the teams from the api
 app.get('/api/teams', (req, res) => {
 
     // const myteams = [
@@ -78,6 +84,7 @@ app.get('/api/teams/:id', (req, res) =>{
     })
 })
 
+// updates team details
 app.put('/api/teams/:id', (req, res) => {
     console.log("Update Team: "+req.params.id);
     console.log(req.body);
@@ -89,6 +96,7 @@ app.put('/api/teams/:id', (req, res) => {
         })
 })
 
+// Sends new team details to the console
 app.post('/api/teams', (req, res)=> {
     console.log("Team Recieved!");
     console.log(req.body.name);
@@ -104,12 +112,17 @@ app.post('/api/teams', (req, res)=> {
     res.send("item added");
 })
 
+//allows a team to be deleted from the server
 app.delete('/api/teams/:id', (req, res) =>{
     console.log("Delete Team: "+ req.params.id);
 
     TeamModel.findByIdAndDelete(req.params.id, (err, data) => {
         res.send(data);
     })
+})
+
+app.get('*', (req, res)=> {
+    res.sendFile(path.join(__dirname+'/../build/index.html'));
 })
 
 app.listen(port, () => {

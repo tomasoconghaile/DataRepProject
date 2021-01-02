@@ -5,7 +5,7 @@ import axios from 'axios';
 
     constructor(){
         super();
-
+        //submits and saves details for new team
         this.onSubmit = this.onSubmit.bind(this);
         this.onNewName = this.onNewName.bind(this);
         this.onNewFounded = this.onNewFounded.bind(this);
@@ -17,24 +17,25 @@ import axios from 'axios';
             Crest:''
         }
     }
-
+    //stores new team name
     onNewName(e){
         this.setState({
             Name: e.target.value
         })
     }
-
+    //stores new yeam year
     onNewFounded(e){
         this.setState({
             Founded: e.target.value
         })
     }
+    //stores the crest for the team
     onNewCrest(e){
         this.setState({
             Crest: e.target.value
         })
     }
-
+    //when the Add Team button is clicked an alert pops up with the details you've entered 
     onSubmit(e){
         e.preventDefault();
         alert("Team: " +this.state.Name + " Founded " + this.state.Founded + " Crest " + this.state.Crest);
@@ -44,6 +45,7 @@ import axios from 'axios';
             founded: this.state.Founded,
             crest: this.state.Crest
         }
+        //Sends the new team to the server
         axios.post('http://localhost:4000/api/teams',newClub)
         .then((res)=> {
             console.log(res)
@@ -56,6 +58,7 @@ import axios from 'axios';
 
     render(){
         return(
+            //Here is my input form for the new team to be created with each detail..
 <div className='App'>
     <form onSubmit={this.onSubmit}>
         <div className="form-group">

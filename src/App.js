@@ -17,6 +17,7 @@ class App extends Component{
     return(
       <Router>
     <div className="App">
+      {/* Here is the code for my navbar */}
       <Navbar bg="dark" variant="dark">
     <Navbar.Brand href="#home">Premier League</Navbar.Brand>
     <Nav className="mr-auto">
@@ -29,6 +30,7 @@ class App extends Component{
     </Nav>
     </Navbar>
     <br />
+    {/* //this is the links on the nvabar from page tp page */}
     <Switch>
       <Route path='/' component={Content} exact/>
       <Route path='/CreateTeam' component={CreateTeam} exact/>

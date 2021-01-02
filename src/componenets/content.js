@@ -9,7 +9,8 @@ export class Content extends React.Component {
         return (
             <div>
                 <h1>Hello Sports Fans</h1>
-
+                
+                {/* here is the code for my carousel on the homepage  */}
                 <Carousel>
                     <Carousel.Item>
                         <img className="d-block w-100 h-10" src="images/back5.jpg"></img>
