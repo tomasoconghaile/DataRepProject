@@ -9,6 +9,8 @@ import{BrowserRouter as Router, Switch, Route} from'react-router-dom';
 import { CreateTeam } from './componenets/createTeam';
 import { ShowTeams } from './componenets/showTeams';
 import { Edit } from './componenets/edit';
+//import { Tables} from './componenets/tables';
+import { Highlights } from './componenets/highlights';
 
 class App extends Component{
   render() {
@@ -21,6 +23,7 @@ class App extends Component{
       <Nav.Link href="/">Home</Nav.Link>
       <Nav.Link href="/ShowTeams">Show Teams</Nav.Link>
       <Nav.Link href="/CreateTeam">Create</Nav.Link>
+      <Nav.Link href="/highlights">Highlights</Nav.Link>
       
       
     </Nav>
@@ -31,6 +34,7 @@ class App extends Component{
       <Route path='/CreateTeam' component={CreateTeam} exact/>
       <Route path='/ShowTeams' component={ShowTeams} exact/>
       <Route path='/edit/:id' component={Edit}></Route>
+      <Route path='/highlights' component={Highlights}></Route>
      
     </Switch>
      
