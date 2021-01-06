@@ -16,7 +16,7 @@ export class ShowTeams extends React.Component{
     };
 
     componentDidMount(){
-        axios.get('http://localhost:4000/api/teams')
+        axios.get('http://localhost:4002/api/teams')
         .then((response) => {
             this.setState({ teams: response.data });
         })
@@ -26,7 +26,7 @@ export class ShowTeams extends React.Component{
     }
 
     ReloadDataMethod(){
-        axios.get('http://localhost:4000/api/teams')
+        axios.get('http://localhost:4002/api/teams')
         .then((response) => {
             this.setState({ teams: response.data });
         })

@@ -46,7 +46,7 @@ import axios from 'axios';
             crest: this.state.Crest
         }
         //Sends the new team to the server
-        axios.post('http://localhost:4000/api/teams',newClub)
+        axios.post('http://localhost:4002/api/teams',newClub)
         .then((res)=> {
             console.log(res)
         })

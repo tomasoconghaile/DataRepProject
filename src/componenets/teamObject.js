@@ -17,7 +17,7 @@ export class TeamObject extends React.Component {
         e.preventDefault();
         console.log("Deleted: " + this.props.team._id);
 
-        axios.delete("http://localhost:4000/api/teams/" + this.props.team._id)
+        axios.delete("http://localhost:4002/api/teams/" + this.props.team._id)
         .then(()=>{
             this.props.ReloadDataMethod();
         })

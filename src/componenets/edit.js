@@ -29,7 +29,7 @@ export class Edit extends React.Component {
 
         //read this record from the database 
         //asynchronous calls to the server
-        axios.get('http://localhost:4000/api/teams/' + this.props.match.params.id)
+        axios.get('http://localhost:4002/api/teams/' + this.props.match.params.id)
         //callback function
         .then(response => {
             this.setState({
@@ -59,14 +59,14 @@ export class Edit extends React.Component {
     // setState - updating our state or object for storing
     onChangeFounded(e){
         this.setState({
-            founded: e.target.value
+            Founded: e.target.value
         });
     }
 
     // onChangePoster method 
     onChangeCrest(e){
         this.setState({
-            crest: e.target.value
+            Crest: e.target.value
         });
     }
 
@@ -90,7 +90,7 @@ export class Edit extends React.Component {
 
         //edit a record
         //method for passing the edited movie
-        axios.put('http://localhost:4000/api/teams/' + this.state._id,newTeam)
+        axios.put('http://localhost:4002/api/teams/' + this.state._id,newTeam)
         //return me a promise
         .then(res =>{
             console.log(res.data)

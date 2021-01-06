@@ -4,7 +4,7 @@ const port = 4002;
 const coors = require('cors');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const path = require('path');
+//const path = require('path');
 
 app.use(coors());
 
@@ -12,8 +12,8 @@ app.use(bodyParser.urlencoded({ extended: false}))
 
 app.use(bodyParser.json())
 
-app.use(express.static(path.join(__dirname, '../build')));
-app.use('/static', express.static(path.join(__dirname, 'build//static')));
+//.use(express.static(path.join(__dirname, '../build')));
+//app.use('/static', express.static(path.join(__dirname, 'build//static')));
 
 //The link to my mongo db server
 const myConnectionString = 'mongodb+srv://admin:Jacob12345@cluster0.wlzsc.mongodb.net/teams?retryWrites=true&w=majority' 
@@ -121,9 +121,11 @@ app.delete('/api/teams/:id', (req, res) =>{
     })
 })
 
+/*
 app.get('*', (req, res)=> {
     res.sendFile(path.join(__dirname+'/../build/index.html'));
 })
+*/
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
